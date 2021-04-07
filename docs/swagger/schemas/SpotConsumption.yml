@@ -1,0 +1,25 @@
+components:
+  schemas:
+    SpotConsumption:
+      type: object
+      properties:
+        spot_id:
+          description: ID do ponto
+          type: integer
+          example: 1
+        start_reading:
+          description: Leitura de base
+          type: decimal
+          example: 123.45
+        end_reading:
+          description: Última leitura dentro do intevalo
+          type: decimal
+          example: 125.45
+        consumption:
+          description: Consumo no intevalo
+          type: decimal
+          example: 2.0
+        measurement_unit:
+          description: Unidade de medida
+          type: string
+          example: "m3"

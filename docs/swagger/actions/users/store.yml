@@ -1,0 +1,47 @@
+/users:
+  post:
+    tags:
+      - Users
+    security:
+      - BearerAuth: []
+    description: Criar usuário
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            properties:
+              name:
+                type: string
+                example: 'John Doe'
+                required: true
+              email:
+                type: string
+                example: 'johndoe@example.com'
+                required: true
+              password:
+                type: string
+                example: 'secret'
+                required: true
+              password_confirmation:
+                type: string
+                example: 'secret'
+                required: true
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Sucesso
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  description: Mensagem
+                  type: string
+                  example: 'User created with success'
+      401:
+        $ref: '#/components/responses/UnauthorizedError'
+      422:
+        $ref: '#/components/responses/UnprocessableEntityError'

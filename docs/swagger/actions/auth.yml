@@ -1,0 +1,27 @@
+/login:
+  post:
+    tags:
+      - Auth
+    security: []
+    description: Login
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            properties:
+              email:
+                type: string
+                example: 'johndoe@example.com'
+                required: true
+              password:
+                type: string
+                example: 'secret'
+                required: true
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Sucesso
+      400:
+        description: Credenciais Invalidas

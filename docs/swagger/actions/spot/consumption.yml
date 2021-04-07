@@ -1,0 +1,42 @@
+/spots/{spot}/consumption:
+  get:
+    tags:
+      - Spots
+    security:
+      - BearerAuth: []
+    description: Retorna o consumo de um ponto dentro de um intervalo
+    parameters:
+      - in: path
+        name: spot
+        schema:
+          type: integer
+          example: 1
+        required: true
+        description: ID do Ponto para pesquisa
+      - in: query
+        name: date_start
+        schema:
+          type: string
+          example: "2020-01-01 00:00:00"
+        required: true
+        description: "Data inicial do intervalo. Formato: Y-m-d H:i:s"
+      - in: query
+        name: date_end
+        schema:
+          type: string
+          example: "2020-12-31 23:59:59"
+        required: true
+        description: "Data final do intevalo. Formato: Y-m-d H:i:s"
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Sucesso
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SpotConsumption"
+      401:
+        $ref: "#/components/responses/UnauthorizedError"
+      422:
+        $ref: "#/components/responses/UnprocessableEntityError"

@@ -1,0 +1,17 @@
+components:
+  schemas:
+    ValidationError:
+      type: object
+      properties:
+        rule:
+          description: Regra quebrada
+          type: string,
+          example: unique
+        field:
+          description: Campo com problema
+          type: string,
+          example: key
+        message:
+          description: Descrição do Erro
+          type: string,
+          example: The key property most be unique
